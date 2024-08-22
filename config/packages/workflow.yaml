@@ -1,2 +1,29 @@
 framework:
-  workflows: null
+  workflows:
+    reproduce_bug:
+      type: workflow
+      marking_store:
+        type: method
+        property: state
+      supports:
+        - App\WorkflowState
+      initial_marking: initial_place
+      places:
+        - initial_place
+        - A
+        - B
+        - C
+        - D
+        - E
+      transitions:
+        from_initial_place_to_a_and_b:
+          from: initial_place
+          to: 
+            - A
+            - B
+        from_a_to_c:
+          from: A
+          to: C
+        from_b_to_d:
+          from: B
+          to: D
